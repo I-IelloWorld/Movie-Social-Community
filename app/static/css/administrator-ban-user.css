@@ -1,0 +1,47 @@
+.ban-user-container {
+    border-bottom: 6px solid orange ;
+    padding-bottom: 6px;
+}
+
+.home {
+    font-size: large;
+}
+
+/*decorate user list*/
+.friendListItem {
+    list-style: none;
+}
+
+.friendListItemName {
+    font-size: x-large;
+    color: orange;
+}
+
+.friendListItemIntro {
+    margin-bottom: 10px;
+    font-size: large;
+    color: gray;
+}
+
+.friendListItemAdd {
+    font-size: xxx-large;
+    cursor: pointer;
+    color: orange;
+}
+
+.friendListItemAdd:hover {
+    color: orangered;
+}
+
+.friendListItemAddWord {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.seperatorUser {
+    border-bottom: 2px dashed lightgray;
+}
+
+.pagination a {
+    color: black;
+}

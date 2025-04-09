@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Personal home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/visiting_card.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.10.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header" >
+    <div class="d-flex flex-column" >
+
+      <div class="profile">
+
+        <span>
+            {% if icon == "NULL" %}
+                <img src='../static/avatars/default.jpg' alt="" class="img-fluid rounded-circle">
+            {% else %}
+                <img src='{{ user.icon }}' alt="" class="img-fluid rounded-circle">
+            {% endif %}
+        </span><h1 class="text-light"><a>{{user.user_name}}</a></h1>
+        </a>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+<!--          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>-->
+          <li><a href="#facts" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#Recent collection" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Recent collection</span></a></li>
+          <li><a href="#Great comment" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Great comments</span></a></li>
+          <li><a href="/" class="nav-link scrollto" ><i class="bx bx-arrow-back"></i> <span>Back</span></a></li>
+
+
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+    <input type="checkbox" id="check">
+    <label for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar" id="setting" >
+        <header>Setting</header>
+        <ul>
+            <li><a href="/change-avatar/"><i class="fas fa-link"></i>Change avatar</a></li>
+            <li><a href="/personal_page/change_info"><i class="fas fa-stream"></i>Change info</a></li>
+            <li><a href="/personal_page/change_pw"><i class="fas fa-calendar-week"></i>Change password</a></li>
+            <li><a href="/personal_page/friends"><i class="far fa-envelope"></i>Friends</a></li>
+<!--            <li><a href="##" id="feedbackButton"><i class="far fa-lightbulb-o"></i>Feedback</a></li>-->
+        </ul>
+    </div>
+  </header><!-- End Header -->
+  <main id="main">
+
+
+
+    <!-- ======= Facts Section ======= -->
+    <section id="facts" class="facts">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Experience</h2>
+
+        </div>
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-end="{{ collect_num }}"  class="purecounter"></span>
+              <p><strong>Collections</strong> </p>
+            </div>
+          </div>
+
+<!--          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">-->
+<!--            <div class="count-box">-->
+<!--              <i class="bi bi-journal-richtext"></i>-->
+<!--              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>-->
+<!--              <p><strong>Projects</strong> adipisci atque cum quia aut</p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-end="{{ comment_num }}" class="purecounter"></span>
+              <p><strong>Comments</strong> </p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-end="{{ friend_num }}" class="purecounter"></span>
+              <p><strong>Friends</strong> </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Facts Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Favorite label</h2>
+        </div>
+
+        <div class="row skills-content">
+
+          <div class="col-lg-6" data-aos="fade-up">
+
+            <div class="progress">
+              <span class="skill">comedy number:<i class="val">{{ comedy_num }}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ comedy_num }}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">action number:<i class="val">{{ action_num}}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ action_num}}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">love number: <i class="val">{{ love_num}}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ love_num}}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">thriller number: <i class="val">{{ thriller_num}}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ thriller_num}}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="progress">
+              <span class="skill">cartoon number:<i class="val">{{ cartoon_num }}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ cartoon_num}}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">science number:<i class="val">{{ science_num}}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ science_num }}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">suspense number: <i class="val">{{ suspense_num }}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ suspense_num}}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">war number: <i class="val">{{ war_num }}%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow='{{ war_num }}' aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="Recent collection" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Recent collection</h2>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" style="height: 35px">
+          <div class="col-lg-12 d-flex justify-content-center" >
+            <ul id="portfolio-flters" >
+              <li id="coll" data-filter=".filter-collection" class="filter-active" >Collection</li>
+              <li data-filter=".filter-like" >like</li>
+            </ul>
+          </div>
+        </div>
+        <div class="clean"></div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+          {% for collection in collections %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-collection" style="width: 16em; height: 24em">
+                <div class="portfolio-wrap">
+                  <img src='{{ collection.pic_path }}' class="img-fluid" alt="" style="width: 16em; height: 24em">
+                  <div class="portfolio-links">
+                      <a href="/movie/{{ collection.id }}" title="More Details"><i class="bx bx-link"></i></a>
+                  </div>
+                  <div>{{ collection.movie_name }}</div>
+                </div>
+              </div>
+
+          {% endfor %}
+
+          {% for like in like_history %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-like" style="width: 16em; height: 24em">
+                <div class="portfolio-wrap">
+                  <img src='{{ like.pic_path }}' class="img-fluid" alt="" style="width: 16em; height: 24em">
+                  <div class="portfolio-links">
+                    <a href="/movie/{{ like.id }}" title="More Details"><i class="bx bx-link"></i></a>
+                  </div>
+                  <div>{{ like.movie_name }}</div>
+                </div>
+              </div>
+          {% endfor %}
+              <div class="col-lg-4 col-md-6 portfolio-item filter-like"><a href="/personal_page/more_like" >more like></a></div>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-collection" class="filter-active"><a href="/personal_page/more_collection" >more collection></a></div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Services Section ======= -->
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="Great comment" class="testimonials section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Great comments</h2>
+
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            {% if com_num == 1 %}
+
+                {% for comment in high_like_comments %}
+                  <div class="swiper-slide" >
+                      <div class="testimonial-item" data-aos="fade-up">
+                        <p>
+                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            {{ comment[0].text }}
+                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <img src='{{ comment[1].pic_path }}' class="testimonial-img" alt="">
+                        <h3>{{ comment[1].movie_name}}</h3>
+                      </div>
+                  </div><!-- End testimonial item -->
+                {% endfor %}
+                    <div class="swiper-slide" style="visibility: hidden">
+                          <div class="testimonial-item" data-aos="fade-up">
+                            <p>
+                              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                xx
+                              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <img src='' class="testimonial-img" alt="">
+                            <h3>xx</h3>
+                          </div>
+                    </div>
+                    <div class="swiper-slide" style="visibility: hidden">
+                          <div class="testimonial-item" data-aos="fade-up">
+                            <p>
+                              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                xx
+                              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <img src='' class="testimonial-img" alt="">
+                            <h3>xx</h3>
+                          </div>
+                    </div>
+            {% elif com_num == 2 %}
+                {% for comment in high_like_comments %}
+                  <div class="swiper-slide" >
+                      <div class="testimonial-item" data-aos="fade-up">
+                        <p>
+                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            {{ comment[0].text }}
+                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <img src='{{ comment[1].pic_path }}' class="testimonial-img" alt="">
+                        <h3>{{ comment[1].movie_name}}</h3>
+                      </div>
+                  </div><!-- End testimonial item -->
+                {% endfor %}
+                    <div class="swiper-slide" style="visibility: hidden">
+                          <div class="testimonial-item" data-aos="fade-up">
+                            <p>
+                              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                xx
+                              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <img src='' class="testimonial-img" alt="">
+                            <h3>xx</h3>
+                          </div>
+                    </div>
+            {% else %}
+              {% for comment in high_like_comments %}
+                  <div class="swiper-slide" >
+                      <div class="testimonial-item" data-aos="fade-up">
+                        <p>
+                          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            {{ comment[0].text }}
+                          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <img src='{{ comment[1].pic_path }}' class="testimonial-img" alt="">
+                        <h3>{{ comment[1].movie_name}}</h3>
+                      </div>
+                  </div><!-- End testimonial item -->
+                {% endfor %}
+            {% endif %}
+
+
+
+
+
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+
+
+</body>
+
+<!-- Vendor JS Files -->
+<script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../static/vendor/aos/aos.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../static/vendor/typed.js/typed.min.js"></script>
+<script src="../static/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="../static/vendor/php-email-form/validate.js"></script>
+<script src="../static/js/jquery-1.12.1.min.js"></script>
+
+
+<!-- Template Main JS File -->
+<script src="../static/js/main.js"></script>
+<script>
+    function test(){
+        $("#coll").click();
+
+    }
+
+  $(document).ready(function(){
+      setTimeout(test, 800);
+    });
+    var swiper = new Swiper('.swiper',{virtual:{
+        slide:['a'],cache: false,},
+        })
+
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+.card-title-font {
+    color: orange;
+}
+
+.card-title-font :hover {
+    color: orangered;
+}
+
+.administrator-card-height {
+
+}
+
+.administrator-jump-button {
+    font-size: x-large;
+    border-radius: 7px;
+    border: 0;
+    background: orange;
+    color: white;
+    padding: 2px;
+}
+
+.administrator-jump-button :hover{
+    padding: 2px;
+    color: orange;
+    background: white;
+}

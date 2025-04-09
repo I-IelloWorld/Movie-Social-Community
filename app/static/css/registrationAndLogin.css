@@ -1,0 +1,108 @@
+html, body {
+    height: 100%;
+}
+body {
+    background-image: linear-gradient(120deg,#FFD700,#FF8C00);
+    height: 960px;
+}
+
+a:hover, a:active, a:visited {
+    color: orangered;
+}
+
+.username-warning, .email-warning, .password-warning, .password-confirm-warning, .username-warning-same, .reminder {
+    color: orangered;
+}
+
+.sign-up-form {
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    width: 1000px;
+    overflow: visible;
+}
+
+.brand {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color: orange;
+}
+
+.brand1 {
+    font-size: 16px;
+    color: gray;
+}
+
+.signTitle {
+    font-size: xx-large;
+    font-weight: bolder;
+    color: orange;
+}
+
+.fa-male {
+    color: lightskyblue;
+    padding: 3px;
+}
+
+.fa-female {
+    color: pink;
+    padding: 3px;
+}
+
+label {
+    font-size: large;
+    line-height: 35px;
+    color: black;
+}
+
+.form-check-label {
+    font-size: large;
+}
+
+.input-sign {
+    border: 1px solid lightgray;
+    border-bottom: 3px solid orange;
+    padding-left: 50px;
+    color: black;
+    float: right;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+.form-check-input {
+    width: 10%;
+}
+
+.buttondiv {
+    background-color: orange;
+    font-weight: bolder;
+    color: white;
+}
+
+.buttonSubmit {
+    background-color: orange;
+    font-weight: bolder;
+    color: white;
+    width: 90px;
+    padding: 10px 16px;
+    font-size: 18px;
+}
+
+
+
+a {
+    margin-left: 13px;
+    color: #2e6da4;
+}
+
+#changeinfo{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+}

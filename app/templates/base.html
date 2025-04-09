@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>Panacea Movie Recommendation Website</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../static/css/screen.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <!--[if IE 7]>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link href="../static/css/swiper-bundle.min.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/swiper-bundle.min.js"></script>
+    <script src="../static/js/index.js"></script>
+    <link href="../static/css/star-rating.min.css" rel="stylesheet">
+    <script src="../static/js/star-rating.js"></script>
+        <link href="../static/css/fa-theme.css" rel="stylesheet">
+    <link href="../static/css/uni-theme.css" rel="stylesheet">
+    <link href="../static/css/svg-theme.css" rel="stylesheet">
+</head>
+<body>
+<!--<input type="text" value="" id="sinput">-->
+<!--<p class="i18n" id="tag">1</p>-->
+<!--<button id="submit"></button>-->
+<div class="clearfix spacer"></div>
+<div class="container-fluid">
+    <nav class="navbar navIndex" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <span class="fa fa-tape"></span>
+                    Panacea</a>
+            </div>
+            <div class="nav-item nav navbar-nav dropdown ">
+                <span class="fa fa-list"></span>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    {% for movie_label in movie_labels %}
+                    <li><a href="/movie_partition?label={{ movie_label }}">{{ movie_labels[movie_label] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if authority == None %}
+            <div class="nav navbar-nav nav-item">
+                <span class="fa fa-sign-in"></span>
+                <a href="/login">Login</a>
+            </div>
+            {% endif %}
+            {% if authority == 0 %}
+            <div class="nav navbar-nav nav-item">
+                <span class="fa fa-sign-out"></span>
+                <a href="/logout">Log Out</a>
+            </div>
+            {% endif %}
+            {% if authority == 1 %}
+            <div class="nav navbar-nav nav-item">
+                <span class="fa fa-sign-out"></span>
+                <a href="/logout">Log Out</a>
+            </div>
+            {% endif %}
+            {% if authority == None %}
+            <div class="nav navbar-nav nav-item">
+                <span class="fa fa-odnoklassniki-square"></span>
+                <a href="/registration">Sign Up</a>
+            </div>
+            {% endif %}
+            <div class="nav navbar-nav nav-item">
+                <span class="fa fa-trophy"></span>
+                <a href="/about">About Us</a>
+            </div>
+            {% if authority == 0 %}
+            <div class="nav navbar-nav nav-item notification">
+                <span class="fa fa-envelope"></span>
+                <a href="/personal_page/friends">Message</a>
+            </div>
+            {% endif %}
+            <form class="navbar-form navbar-left" method="post" action="{{ url_for('search_movie') }}">
+                <span class="fa fa-search login-inputicon"></span>
+                <div class="form-group">
+
+                    <input type="text" class="form-control searchBox" placeholder="Search" name="search" value="" id="searchMovie">
+                    <button class="btn btn-lg buttondiv" type="submit" id="indexSearchMovie">Search</button>
+                </div>
+            </form>
+            {% if authority == 0 %}
+            <div class="nav navbar-nav nav-item">
+                <a href="/personal_page">
+                    {% if user.icon == "NULL" %}
+                        <img class="profilePic" src='../static/avatars/default.jpg' alt="" width="30px" height="30px">
+                    {% else %}
+                        <img class="profilePic" src='{{ user.icon }}' alt="" width=33 height=33>
+                    {% endif %}
+<!--                    <img class="profilePic" src='{{ icon }}' alt="" width="30px" height="30px">-->
+                    {{ name }}
+                </a>
+            </div>
+            {% endif %}
+            {% if authority == 1 %}
+            <div class="nav navbar-nav nav-item">
+                <a href="/administrator">
+                    <span class="fa fa-crown"></span>Administrator
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+</div>
+
+
+{% block content %}{% endblock %}
+</body>
+</html>

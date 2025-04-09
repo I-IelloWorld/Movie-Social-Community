@@ -1,0 +1,163 @@
+/*about swiper card*/
+
+.swiper {
+        width: 280px;
+        height: 420px;
+      }
+
+      .swiper-slide {
+        word-wrap: normal;
+        display: block;
+        float: left;
+        padding: 13px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .swiper-slide img {
+        height: 212px;
+          width: 212px;
+      }
+
+      .swiper-slide:nth-child(1n) {
+        background: repeating-linear-gradient(45deg,red, orange);
+      }
+
+      .swiper-slide:nth-child(2n) {
+        background: repeating-linear-gradient(45deg, #BC95C6, #7DC4CC);
+      }
+
+      .swiper-slide:nth-child(3n) {
+        background: repeating-linear-gradient(45deg, #F6736B, #934F91);
+      }
+
+      .swiper-slide:nth-child(4n) {
+
+          background: repeating-linear-gradient(45deg, #FF9A9E, #F6E745);
+      }
+
+      .swiper-slide:nth-child(5n) {
+        background: repeating-linear-gradient(45deg,  #FFFCDC, #D9A7C7);
+      }
+
+      .swiper-slide:nth-child(6n) {
+        background: repeating-linear-gradient(45deg, #4DA2CB, #67B26F);
+      }
+
+      .swiper-slide:nth-child(7n) {
+        background: repeating-linear-gradient(45deg, #67F9D4, #FF9554);
+      }
+
+      .swiper-slide:nth-child(8n) {
+        background: repeating-linear-gradient(45deg, #EFBD8A, #D343BA);
+      }
+
+      .swiper-slide:nth-child(9n) {
+        background: repeating-linear-gradient(45deg, #6190E8, #A7BFE8);
+      }
+
+      .swiper-slide:nth-child(10n) {
+        background: repeating-linear-gradient(45deg, #F902FF, #00DBDE);
+      }
+
+/*      change recommendation type*/
+.recommend-change-type {
+    color: white;
+    background: orange;
+    border: none;
+    margin: 13px;
+    border-radius: 13px;
+    padding: 10px;
+    font-size: large;
+}
+
+.recommend-change-type:hover {
+    background: repeating-linear-gradient(to left, orangered, orange);
+    box-shadow: 3px 3px 3px 3px lightgray;
+    color: white;
+    border: none;
+}
+
+.recommend-change-type-active {
+    background: repeating-linear-gradient(to left, orangered, orange);
+    box-shadow: 3px 3px 3px 3px lightgray;
+    color: white;
+    border: none;
+}
+
+
+/*card decoration*/
+.CardUsername {
+    font-size: xx-large;
+    color: white;
+}
+
+.CardUsername1 {
+    font-size: xx-large;
+    color: orange;
+}
+
+.friends-card {
+    border: 10px solid orange;
+    border-radius: 15px;
+    padding:13px;
+}
+
+.card-text {
+    font-size: x-large;
+}
+
+/*decorate user list*/
+.friendListItem {
+    list-style: none;
+}
+
+.friendListItemName {
+    font-size: x-large;
+    color: orange;
+}
+
+.friendListItemIntro {
+    margin-bottom: 10px;
+    font-size: large;
+    color: gray;
+}
+
+.friendListItemAdd {
+    font-size: xxx-large;
+    cursor: pointer;
+    color: orange;
+}
+
+.friendListItemAdd:hover {
+    color: orangered;
+}
+
+.friendListItemAddWord {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.seperatorUser {
+    border-bottom: 2px dashed lightgray;
+}
+
+/*decorate modal of making friends*/
+.friendReasonTextarea {
+    resize: none;
+    border-radius: 13px;
+    border: 5px solid orange;
+}
+
+.reason-empty-warning {
+    font-size: larger;
+    color: orangered;
+}
+
+.pagination a {
+    color: black;
+}

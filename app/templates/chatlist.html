@@ -1,0 +1,441 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <TITLE> New Document </TITLE>
+  <meta NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+
+	  <style type="">
+	  * {
+    margin: 0;
+    padding: 0;
+}
+  body{
+  	font-size:16px;
+  }
+  .header{
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 30%;
+    height: 45px;
+    background: #21a4f4;
+
+  }
+  .header p{
+  	margin-left:20px;
+  	height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 18px;
+    display:inline-block;
+  }
+  .header span{
+  	color:#fff;
+  	margin-right: 20px;
+    float: right;
+    line-height: 45px;
+  }
+  .content{
+  	margin-top:45px;
+  }
+  .nav{
+  background-color: #fff;
+  }
+  .header-two{
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 30%;
+    height: 45px;
+    background: #21a4f4;
+
+
+  }
+  .header-two p{
+  	margin-left:20px;
+  	height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 18px;
+    display:inline-block;
+  }
+  .header-two span{
+  	color:#fff;
+  	margin-left:6px;
+    line-height: 45px;
+  }
+  .header-two i{
+  	color:#fff;
+  	margin-left: 20px;
+    line-height: 45px;
+  }
+  .header-two input{
+  	border:none;
+
+  	width:30%;
+  	background-color:transparent;
+  }
+  .sort_box-two{
+  	display:block;
+  }
+  .input{
+  	border-bottom: 2px #fff solid;
+    display: inline-block;
+    height: 42px;
+    width: calc(100% - 50px);
+  }
+  ul li{list-style: none;}
+a{text-decoration: none;cursor: pointer;}
+html{height: 100%;}
+a,input,img,textarea,span,div{outline: 0;-webkit-tap-highlight-color:rgba(255,0,0,0);}
+
+#letter{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    font-size: 75px;
+    color: #555;
+    text-align: center;
+    line-height: 100px;
+    background: rgba(145,145,145,0.6);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin:-50px 0px 0px -50px;
+    z-index: 99;
+    display: none;
+}
+#letter img{
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin:25px 0px 0px 25px;
+}
+[class^="sort_box"]{
+    width: 80%;
+    padding-top: 45px;
+	overflow-y:auto
+
+}
+[class^="sort_list"]{
+    padding:10px 60px 10px 80px;
+    position: relative;
+    line-height: 50px;
+    border-bottom:1px solid #ddd;
+}
+
+[class^="sort_list"] .num_logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+}
+[class^="sort_list"] .num_logo img{
+    width: 50px;
+    height: 50px;
+}
+[class^="sort_list"] .num_name{
+    color: #000;
+}
+
+.sort_letter{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    color:#787878;
+    font-size: 14px;
+    border-bottom:1px solid #ddd;
+}
+.initials{
+    position: fixed;
+    top: 47px;
+    left: 29%;
+    height: 100%;
+    width: 15px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 12px;
+    z-index: 99;
+    background: rgba(145,145,145,0);
+}
+.initials li img{
+    width: 14px;
+}
+.addfriends{
+	position: fixed;
+    top: 5px;
+    left: 32%;
+    height: 100%;
+    padding-right: 10px;
+    /*text-align: center;*/
+    font-size: 20px;
+    z-index: 99;
+}
+.application{
+    padding:10px 60px 10px 80px;
+    position: relative;
+    line-height: 50px;
+    border-bottom:1px solid #ddd;
+}
+.app_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;
+}
+.app_img img{
+    width: 50px;
+    height: 50px;
+}
+
+
+/*chat*/
+.chat-username {
+	font-size: xx-large;
+}
+
+.other-user-chat-box {
+	width: fit-content;
+	max-width: 100%;
+	font-size: large;
+	background-color: #21a4f4;
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+	word-wrap: break-word;
+}
+
+.user-chat-box {
+	width: fit-content;
+	max-width: 100%;
+	font-size: large;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 5px;
+	color: black;
+	word-wrap: break-word;
+
+}
+
+.chat-box {
+
+	overflow-y: scroll;
+	height: 63%;
+}
+
+.send-chat-box {
+	margin-top: 10px;
+	height: 15%;
+}
+
+.chat-text {
+	border: 2px solid lightgray;
+	border-radius: 13px;
+	padding: 12px;
+	font-size: large;
+}
+
+.chat-submit {
+	font-size: x-large;
+	padding: 8px;
+	border-radius: 12px;
+	background-color: #21a4f4;
+	border: none;
+	color: white;
+	margin: 36px 20px 0 0;
+}
+
+.chat-img {
+	width: 3em;
+	height: 3em;
+	float: left;
+	display: block;
+}
+
+.chat-title {
+	margin-bottom: 9px;
+	height: 37px;
+}
+
+.accept-btn{
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #21a4f4;
+    color: white;
+    box-shadow: #666 0px 0px 6px;
+	font-size: large;
+}
+
+.leave-room {
+	margin-left: 13px;
+	background-color: lightgray;
+	color: white;
+	font-size: large;
+	border: none;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+
+
+	  </style>
+  <!-- Fonts -->
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900'
+	rel='stylesheet' type='text/css'>
+<!-- CSS Libs -->
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+<!--<link rel="stylesheet" type="text/css" href="../static/css/bootstrap-switch.min.css">-->
+	 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="../static/css/font-awesome.css">
+
+	<script type="text/javascript" src="../static/js/jquery-1.12.1.min.js"></script>
+<!--	<script type="text/javascript" src="../static/js/circle.js"></script>-->
+	<script type="text/javascript" src="../static/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="../static/js/chat-list.js" ></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" type="text/javascript"></script>
+
+
+ </head>
+
+ <BODY>
+	<div class="header-two" >
+  	 <div>
+  		<i class="glyphicon glyphicon-chevron-left" onclick="back()"><a href="javascript:back()"></a> </i>
+			<div class="input">
+				<span class="glyphicon glyphicon-search"></span>
+				<input id="search" type="text" />
+			</div>
+		</div>
+  	</div>
+
+  	<div class="header">
+  	 <div>
+  		<p>Chat List</p>
+		 <a href="/personal_page/friends" class="accept-btn" style="margin-left: 13px">Friends List</a>
+
+         <a href="/recommend_friends" ><span class="glyphicon glyphicon-plus"></span></a>
+		 <a href="/" ><span class="glyphicon glyphicon-home"></span></a>
+  	</div>
+  	</div>
+	<div class="container-fluid">
+		<div class="col-md-4">
+		<div id="letter" ></div>
+  	<div class="sort_box-two">
+	</div>
+	<div class="sort_box" >
+
+		{% for friend in friends_info %}
+			<div class="sort_list">
+				<div id="friendRoom" hidden="true">{{ friend.room }}</div>
+				<div class="num_logo">
+					<img src='{{ friend.icon }}' alt="">
+				</div>
+				<div class="num_name">{{ friend.user_name }}
+					{% if friend.unread != 0 %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span id="unread"><span class="fa fa-circle" style="color: orangered"></span><span>&nbsp;{{ friend.unread }}</span></span>
+					{% endif %}
+				</div>
+<!--                <div><a href="/contact/{{ friend.room }}"></a></div>-->
+			</div>
+		{% endfor %}
+
+		<div class="sort_list" style="display: none">
+			<div class="num_logo">
+				<img src="images/avator.png" alt="">
+			</div>
+			<div class="num_name">小明</div>
+		</div>
+<!--		<div class="initials">-->
+<!--			<ul>-->
+<!--			</ul>-->
+<!--		</div>-->
+	</div>
+	</div>
+
+
+		<!-- chat-->
+		<div class="col-md-8" id="chat-interface">
+			<div class="col-md-12" hidden="true">
+				<div class="chat-username" id="chatUsername"><button id="leaveRoom" class="leave-room" href="/chat_list">Exit</button></div>
+			</div>
+			<div class="col-md-12" hidden="true">
+				<hr>
+			</div>
+			<div class="container-fluid chat-box" hidden="true" id="chatBox">
+				<div class="row">
+					<div class="col-md-5 ">
+					<div class="chat-title"><img src="" alt="" class="chat-img" id="contact-img"><h3>&nbsp user</h3></div>
+					<p class="other-user-chat-box">
+					If there is any work in the afterlife, you must do it. Behold me whenever you are called. Be watchful at any moment to work there. Plough my fields, carry water and sand to the east and west. Behold me whenever you are called
+					</p>
+				</div>
+				</div>
+
+				<div class="row">
+				<div class="col-md-5 col-md-offset-7 ">
+					<div class="chat-title"><img src="" alt="" class="chat-img" id="user-img"><h3>&nbsp user</h3></div>
+					<p class="user-chat-box pull-right">
+					If there is any work in the afterlife, you must do it. Behold me whenever you are called. Be watchful at any moment to work there. Plough my fields, carry water and sand to the east and west. Behold me whenever you are called
+					</p>
+				</div>
+				</div>
+			</div>
+			<div class="container-fluid send-chat-box" hidden="true">
+				<div class="col-md-11">
+					<textarea name="chat" id="" cols="85" rows="6" class="chat-text" placeholder=""></textarea>
+				</div>
+				<div class="col-md-1">
+					<button class="chat-submit" id="chatSubmit">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+ <div class="modal fade" id="chatErrorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    You should input 1-600 symbols
+                </h4>
+            </div>
+            <div class="modal-body" id="log-modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="closeModal1">Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+ <div id="roomID" hidden="true"></div>
+
+
+
+
+
+
+
+ </BODY>
+</HTML>
+

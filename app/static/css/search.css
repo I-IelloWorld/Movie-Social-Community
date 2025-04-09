@@ -1,0 +1,75 @@
+
+/*search brand button*/
+.search-brand {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color: orange;
+    padding: 13px 6px 6px;
+}
+
+/*      change search type*/
+.search-change-type {
+    color: white;
+    background: orange;
+    border: none;
+    margin: 13px;
+    border-radius: 13px;
+    padding: 10px;
+    font-size: large;
+    cursor: pointer;
+}
+
+.search-change-type:hover {
+    background: repeating-linear-gradient(to left, orangered, orange);
+    box-shadow: 3px 3px 3px 3px lightgray;
+    color: white;
+    border: none;
+}
+
+.search-change-type-active {
+    background: repeating-linear-gradient(to left, orangered, orange);
+    box-shadow: 3px 3px 3px 3px lightgray;
+    color: white;
+    border: none;
+}
+
+/*decorate user list*/
+.friendListItemSearch {
+    list-style: none;
+}
+
+.friendListItemNameSearch {
+    font-size: x-large;
+    color: orange;
+}
+
+.friendListItemIntroSearch {
+    margin-bottom: 10px;
+    font-size: large;
+    color: gray;
+}
+
+.friendListItemAddSearch {
+    font-size: xxx-large;
+    cursor: pointer;
+    color: orange;
+}
+
+.friendListItemAddSearch:hover {
+    color: orangered;
+}
+
+.friendListItemAddWordSearch {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.seperatorUserSearch {
+    border-bottom: 2px dashed lightgray;
+}
+
+.friendReasonTextarea {
+    resize: none;
+    border-radius: 13px;
+    border: 5px solid orange;
+}

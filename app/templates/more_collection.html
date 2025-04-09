@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/search.css">
+<script src="../static/js/search.js"></script>
+
+<div class="clearfix spacer"></div>
+<div class="container-fluid">
+    <div class="col-md-12 header-top search-brand">All Results</div>
+    <div class="col-md-12">
+
+        {% if type == 'collection' %}
+        <a href="/personal_page/more_collection"><div class="col-md-1 search-change-type search-change-type-active">Collections</div></a>
+        <a href="/personal_page/more_like"><div class="col-md-1 search-change-type">Likes </div></a>
+        {% else %}
+        <<a href="/personal_page/more_collection"><div class="col-md-1 search-change-type ">Collections</div></a>
+        <a href="/personal_page/more_like"><div class="col-md-1 search-change-type search-change-type-active">Likes </div></a>
+        {% endif %}
+
+
+    </div>
+
+    {% if type == 'collection' %}
+    <div class="col-md-12">
+            {% for collection in collections %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ collection.id }}"><img class="card-img-top" src='{{ collection.pic_path }}' alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title"><a href="/movie/{{ collection.id }}">{{ collection.movie_name }}</a></h5>
+                                        <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ collection.vote_average }}" data-size="s"  title="">
+                    </p>
+                <p class="card-text card-text-short">{{ collection.introduction }}</p>
+                <a href="/movie/{{ collection.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+    {% else %}
+    <div class="col-md-12">
+            {% for like in likes %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ like.id }}"><img class="card-img-top" src="{{ like.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title"><a href="/movie/{{ like.id }}">{{ like.movie_name }}</a></h5>
+                                        <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ like.vote_average }}" data-size="s"  title="">
+                    </p>
+                <p class="card-text card-text-short">{{ like.introduction }}</p>
+                <a href="/movie/{{ like.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+    {% endif %}
+
+
+
+
+
+</div>
+{% include "footer.html" %}
+{% endblock %}
+
+
+
+

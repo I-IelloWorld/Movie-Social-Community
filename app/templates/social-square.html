@@ -1,0 +1,257 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+  <script src="../static/js/jquery-1.12.1.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/social-sqaure.js"></script>
+<link rel="stylesheet" href="../static/css/social-sqaure.css">
+
+    <div class="container-fluid">
+        <div class="clearfix spacer"></div>
+        <div class="col-md-12 navbar-brand" style="text-align: center"><span class="fa fa-user-plus"></span>Social Square for Making Friends</div>
+        <div class="col-md-12" style="text-align: center">
+            {% if recommend_type == "by_tag" %}
+            <button class="recommend-change-type recommend-change-type-active">Recommend By Tag</button>
+            <a href="/recommend_friends2"><button class="recommend-change-type" >Recommend By Your Rate</button></a>
+            {% else %}
+            <a href="/recommend_friends"><button class="recommend-change-type" >Recommend By Tag</button></a>
+            <button class="recommend-change-type  recommend-change-type-active">Recommend By Your Rate</button>
+            {% endif %}
+        </div>
+        <div class="container-fluid">
+            <div class="clearfix spacer"></div>
+            <div class="col-md-4">
+                <div class="swiper myCardSwiper">
+                  <div class="swiper-wrapper">
+                      {% for r in recommend %}
+                       <div class="swiper-slide">
+                          <div class="CardUsername cardUser0">{{ r['user_name'] }}</div>
+                            <img src="{{ r['icon'] }}" alt="userPic" width="100px" height="100px">
+                            <div class="clearfix spacer"></div>
+                          <div><a href="/personal_page/{{ r['id'] }}">to profile&nbsp;</a><p class="userId0" hidden>{{ r['id'] }}</p><button class="btn btn-lg buttondiv add-recommended-friends" id="addRecommendedFriends{{ r['id'] }}">Add</button></div>
+                           <p class="cardGender0" hidden>
+                               {% if r['gender'] == '1'  %}
+                               male
+                               {% else %}
+                               female
+                               {% endif %}
+                           </p>
+
+                           <p class="cardIntro0" hidden>{{ r['introduction'] }}</p>
+                           <p class="cardTag0" hidden>
+                               {% for movie_label in movie_labels %}
+                               {% if r[movie_labels[movie_label]] %}
+                               {{ movie_labels[movie_label] }}
+                               {% endif %}
+                               {% endfor %}
+<!--                               {% if r['comedy'] %}-->
+<!--                               Comedy&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['action'] %}-->
+<!--                               Action&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['love'] %}-->
+<!--                               Love&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['cartoon'] %}-->
+<!--                               Cartoon&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['science'] %}-->
+<!--                               Science&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['suspense'] %}-->
+<!--                               Suspense&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['war'] %}-->
+<!--                               War&nbsp;-->
+<!--                               {% endif %}-->
+<!--                               {% if r['thriller'] %}-->
+<!--                               Thriller&nbsp;-->
+<!--                               {% endif %}-->
+                           </p>
+                        </div>
+                      {% endfor %}
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="container-fluid card friends-card">
+                    <div hidden id="friendCardIndex">a</div>
+                    <div class="col-md-12">
+                        <div class="card-title CardUsername1" id="cardUser"><a href=""></a></div>
+                        <div class="clearfix spacer"></div>
+                        <div class="card-text">
+                            gender: <span id="cardGender"></span>
+                        </div>
+                        <div class="clearfix spacer"></div>
+                        <div class="card-text">
+                            introduction: <span id="cardIntro"></span>
+                        </div>
+                        <div class="clearfix spacer"></div>
+                        <div class="card-text">
+                            tag: <span id="cardTag"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix spacer"></div>
+            <div class="header-top col-md-12"></div>
+
+<!--            all users that are not friends-->
+            <div class="container">
+                <ul >
+                    <div class="clearfix spacer"></div>
+                    {% for user in user_all.items %}
+                    <li class="friendListItem">
+                        <div class="col-md-9">
+                            <div class="row">
+                                <p class="friendListItemName"><a href="/personal_page/{{ user.id }}">{{ user.user_name }}&nbsp;<img src="{{ user.icon }}" alt="" class="friendListItemImg" width="30px" height="30px"></a></p>
+                            </div>
+                            <div class="row">
+                                <div class="friendListItemIntro">{{ user.introduction }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <span hidden>{{ user.id }}</span>
+                            <span id="addFriends{{ user.id }}" class="fa fa-plus-circle friendListItemAdd" style="font-size: xx-large"><span class="friendListItemAddWord">&nbsp;Add Friend</span></span>
+                        </div>
+                        <div class="col-md-12 seperatorUser"></div>
+                        <div class="clearfix spacer"></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+<!--            输入交友理由的模态框 modal for making friends reasons-->
+            <div class="modal fade" id="friendReason" tabindex="-1" role="dialog" aria-labelledby="friendReasonLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="friendReasonLabel">
+                                Reasons for Making Friends
+                            </h4>
+                        </div>
+                        <div class="modal-body" id="friendReasonBody">
+                            <form  action="/add_friend" method="post" id="friendReasonForm">
+                                <input  id="selectedUserId" value="" name="userId" hidden>
+                                <div class="reason-empty-warning" id="reasonEmptyWarning" hidden>
+                                    you should input more than 2 words and less than 140 words
+                                </div>
+                                <label for="friendReasonBodyText">Reasons:</label>
+                                <textarea class="friendReasonTextarea" name="reason" id="friendReasonBodyText" cols="30" rows="10" maxlength="140" minlength="2" placeholder="must more than 2 words, but less than 140 words">I just want to make friend with you</textarea>
+                                <div class="clearfix spacer"></div>
+                                <button type="submit" class="btn btn-lg buttondiv">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" >Close
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+            {% if recommend_type=="by_tag" %}
+                <!-- Pagination Links-->
+            <div class="clearfix spacer"></div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="pagination col-md-4 ">
+                    <div class="text-center">
+                <a href="{{ url_for('recommend_friends', page=user_all.prev_num) }}"
+                   class="btn btn-lg btn-outline-dark
+                   {% if user_all.page == 1 %}disabled{% endif %}" style="color: black">
+                    &laquo;
+                </a>
+            <!-- Loop through the number of pages to display a link for each-->
+                {% for page_num in user_all.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if page_num %}
+            <!-- Check for the active page and set the link to "Active"-->
+                        {% if user_all.page == page_num %}
+                        <a href="{{ url_for('recommend_friends', page=page_num) }}"
+                           class="btn btn-warning text-light" style="color: black">
+                            {{ page_num }}
+                        </a>
+                        {% else %}
+                        <a href="{{ url_for('recommend_friends',page=page_num) }}"
+                           class="btn btn-outline-dark " style="color: black">
+                            {{ page_num }}
+                        </a>
+                        {% endif %}
+                    {% else %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ url_for('recommend_friends',page=user_all.next_num) }}"
+                   class="btn btn-outline-dark
+                   {% if user_all.page == user_all.pages %}disabled{% endif %}" style="color: black">
+                    &raquo;
+                </a>
+            </div>
+                <p class="text-center mt-3 h4">
+                   Showing page {{ user_all.page }} of {{ user_all.pages }}
+                </p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if recommend_type=="by_rate" %}
+                <!-- Pagination Links-->
+            <div class="clearfix spacer"></div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="pagination col-md-4 ">
+                    <div class="text-center">
+                <a href="{{ url_for('recommend_friends2', page=user_all.prev_num) }}"
+                   class="btn btn-lg btn-outline-dark
+                   {% if user_all.page == 1 %}disabled{% endif %}" style="color: black">
+                    &laquo;
+                </a>
+            <!-- Loop through the number of pages to display a link for each-->
+                {% for page_num in user_all.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if page_num %}
+            <!-- Check for the active page and set the link to "Active"-->
+                        {% if user_all.page == page_num %}
+                        <a href="{{ url_for('recommend_friends2', page=page_num) }}"
+                           class="btn btn-warning text-light" style="color: black">
+                            {{ page_num }}
+                        </a>
+                        {% else %}
+                        <a href="{{ url_for('recommend_friends2',page=page_num) }}"
+                           class="btn btn-outline-dark " style="color: black">
+                            {{ page_num }}
+                        </a>
+                        {% endif %}
+                    {% else %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ url_for('recommend_friends2',page=user_all.next_num) }}"
+                   class="btn btn-outline-dark
+                   {% if user_all.page == user_all.pages %}disabled{% endif %}" style="color: black">
+                    &raquo;
+                </a>
+            </div>
+                <p class="text-center mt-3 h4">
+                   Showing page {{ user_all.page }} of {{ user_all.pages }}
+                </p>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+        {% include "footer.html" %}
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Registration</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="../static/css/screen.css">
+        <link rel="stylesheet" href="../static/css/animation.css">
+    <!--[if IE 7]>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/registrationAndLogin.css">
+    <link rel="stylesheet" href="../static/css/bootstrap-select.css"></link>
+    <!--    <link href="css/lity.css" rel="stylesheet">-->
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/registrationAndLogin.js"></script>
+    <script src="../static/js/bootstrap-select.js"></script>
+</head>
+<body>
+<div class="clearfix spacer"></div>
+<div class="container sign-up-form">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="brand">Panacea</div>
+        </div>
+        <div class="row">
+            <div class="brand1">Recommend movies you like and like-minded friends</div>
+        </div>
+        <div>
+            <div class="clearfix spacer"></div>
+
+            <img src="../static/img/banners/brand.png" alt="" width="300px" height="300px">
+
+        </div>
+    </div>
+    <div class="col-md-6" id="Sign-up">
+        <form action="" id="sign-up-form" method="post">
+            <div class="signTitle">Sign Up</div>
+            <div class="clearfix spacer"></div>
+            <label for="username">Username</label>
+            <div class="form-group">
+                <p class="username-warning-same">{{ message }}</p>
+                <span class="fa fa-user login-inputicon"></span>
+                <input value="" class="input-sign" type="text" placeholder="Enter your username" id="username" name="username" required="">
+                <p hidden class="username-warning">Username should be alphabets, Chinese characters, numbers or "_" between 4-12 length</p>
+            </div>
+            <label for="Email">Email</label>
+            <div class="form-group">
+                <span class="fa fa-envelope login-inputicon"></span>
+                <input value="" type="text" id="Email" class="input-sign" placeholder="email" name="email">
+                <p hidden class="email-warning">Please enter correct email</p>
+            </div>
+            <label id="gender">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="male">
+                <span class="fa fa-mars fa-male"></span>
+                <label class="form-check-label">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="female" checked>
+                <span class="fa fa-venus fa-female"></span>
+                <label class="form-check-label">
+                    Female
+                </label>
+            </div>
+            <div class="form-group" id="tagSelect" hidden>
+                {% for movie_label in movie_labels %}
+                <input type="text" name="{{ movie_labels[movie_label] }}" id="{{ movie_labels[movie_label] }}CheckShow" value="">
+                {% endfor %}
+            </div>
+            <div class="form-group">
+
+                <p class="btn btn-lg buttondiv" id="selectTag"><span class="fa fa-tags" style="color: orangered"></span>Select Tags</p><span>&nbsp; must selected</span>
+            </div>
+            <label for="password">Password</label>
+            <div class="form-group">
+                <span class="fa fa-lock login-inputicon"></span>
+                <input value="" type="password" id="password" class="input-sign" placeholder="password" name="password">
+                <p hidden class="password-warning">Password should be alphabets, numbers or "_" between 6-18 length</p>
+            </div>
+            <label for="passwordConfirm">Password Confirmation</label>
+            <div class="form-group">
+                <span class="fa fa-lock login-inputicon"></span>
+                <input value="" type="password" id="passwordConfirm" class="input-sign" placeholder="password confirm">
+                <p hidden class="password-confirm-warning">Password Confirmation should be same as the password</p>
+            </div>
+            <div class="clearfix spacer"></div>
+            <button class="btn btn-lg buttondiv" type="submit" id="sign-up-button">Confirm</button>
+            <a href="/login">Sign in instead</a>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Sign Up Errors
+                </h4>
+            </div>
+            <div class="modal-body" id="reg-modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="closeModal">Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!--tag modal-->
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="myTagModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myTagModalLabel">
+                    Tags
+                </h4>
+            </div>
+
+            <div class="modal-body" id="tag-modal-body">
+                {% for movie_label in movie_labels %}
+                <div class="form-check">
+                    <input class="form-check-input movie-type-check" type="checkbox" value="" id="{{ movie_labels[movie_label] }}Check">
+                    <label class="form-check-label" for="{{ movie_labels[movie_label] }}Check">{{ movie_labels[movie_label] }}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="closeTagModal">Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+</body>
+</html>

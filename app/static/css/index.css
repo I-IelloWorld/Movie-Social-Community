@@ -1,0 +1,222 @@
+body {
+    color: black;
+}
+
+.navIndex {
+    background-color: white;
+    border-top: 8px solid orange;
+    border-bottom: 8px solid orange;
+    padding: 8px;
+    border-radius: 0px;
+}
+
+.navbar-header a, a:hover, a:visited, a:active {
+    color: orange;
+}
+
+.navbar-brand {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color: orange;
+    padding: 6px;
+}
+
+.nav-item {
+    margin: 8px 0 0 30px;
+    padding: 15px;
+    font-size: large;
+    background-color: orange;
+    border-radius: 11px;
+}
+
+.navbar-nav > a{
+    color: white;
+}
+
+.profilePic {
+    margin-right: 2px;
+}
+
+.navbar-nav > a:hover{
+    color: black;
+}
+
+.navbar-nav > a:visited{
+    color: white;
+}
+
+.navbar-nav > a:active{
+    color: white;
+}
+
+.searchBox {
+    border-radius: 8px;
+    border: 3px solid orange;
+    padding: 15px;
+    margin-top: 8px;
+    margin-left: 4em;
+    /*-webkit-transition: width 0.4s ease-in-out;*/
+    /*transition: width 0.4s ease-in-out;*/
+
+}
+/*.searchBox:focus{*/
+/*    width:100%;*/
+/*}*/
+
+.buttondiv {
+    margin-left: 1em;
+    background-color: orange;
+    font-weight: bolder;
+    color: white;
+    height: 120%;
+}
+
+.fa-search {
+    color: orange;
+}
+
+.leftBarTitle {
+    font-size: xx-large;
+    color: orange;
+    padding-bottom: 12px;
+}
+
+.leftBar  a {
+    color: black;
+}
+
+.leftBar  a:hover {
+    color: orange;
+}
+
+.leftBar ul {
+    font-size: large;
+}
+
+.leftBarMore {
+    margin-left: 8em;
+}
+
+.fourBarTitle, .fourBarTitleMore{
+    border-radius: 13px;
+    font-size: x-large;
+    color: orange;
+    padding: 12px;
+    float: left;
+    margin-right: 2em;
+}
+
+.fourBarTitleMin {
+    border-radius: 8px;
+    font-size: large;
+    color: orange;
+    padding: 6px;
+    float: left;
+    margin-right: 2em;
+    cursor: pointer;
+
+}
+
+.fourBarTitleMinActive {
+    box-shadow: 3px 3px 3px 3px lightgray;
+}
+
+
+.fourBarTitleMin:hover {
+    box-shadow: 3px 3px 3px 3px lightgray;
+    background: repeating-linear-gradient(to left, orangered, orange);
+    color: white;
+}
+
+
+.fourBarTitle:hover {
+    box-shadow: 3px 3px 3px 3px lightgray;
+    background: repeating-linear-gradient(to left, orangered, orange);
+    color: white;
+}
+
+.fourBarTitle p {
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.fourBarTitleMore{
+    float: right;
+}
+
+.fourBarTitleActive {
+    box-shadow: 3px 3px 3px 3px lightgray;
+    background: repeating-linear-gradient(to left, orangered, orange);
+}
+
+.fourBarTitleActive p {
+    color: white;
+}
+
+.socialSquareButton {
+    background: orange;
+    border: none;
+    border-radius: 13px;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: white;
+    padding: 12px;
+    float: left;
+    margin-right: 2em;
+    width: 200px;
+    height: 200px;
+}
+
+.socialSquareButton:hover {
+    box-shadow: 3px 3px 3px 3px lightgray;
+    background: repeating-linear-gradient(to left, orangered, orange);
+}
+
+.card-title {
+    color: orange;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.card-text-short {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.movie-title {
+    color: orange;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.movie-title1 {
+    color: orange;
+    font-size: xx-large;
+    font-weight: bolder;
+    max-width: 370px;
+    margin-left: 30px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.feedbackTitle {
+    height: 60px;
+    resize: none;
+    border-radius: 13px;
+    overflow: hidden;
+    border: 8px solid orange;
+}
+
+.feedbackContent {
+    height: 250px;
+    resize: none;
+    border-radius: 13px;
+    border: 8px solid orange;
+}
+
+
+

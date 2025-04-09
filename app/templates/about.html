@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+{% if authority == 0 %}
+<div class="nav navbar-nav nav-item">
+                <a href="##" id="feedbackButton">
+                    <span class="fa fa-lightbulb-o"></span>Feedback
+                </a>
+            </div>
+{% endif %}
+<div class="container">
+    <div class="row">
+    <div class="navbar-brand">Movie Recommendation And Social Networking Community</div>
+</div>
+    <div class="row">
+        <div class="clearfix spacer"></div>
+        <div class="col-md-7">
+            <div class="col-md-12"><div class="navbar-brand">Introduction of Our Website</div></div>
+            <p style="font-size: large">Recovering from the pandemic, people, especially generation Z have fewer opportunities to watch movies in the cinema and lose interest in movies. So we hope to establish a movie-based friend-making website to build a huge and comprehensive community for movie communication, where users can express their opinions and meet like-minded friends, creating social opportunities for movie enthusiasts to transcend spatial limitations. This website will include a movie information module and a friends module. On this website, people can browse information such as the introduction and released stills of the currently released movie, as well as rate and post their own comments on the movie. The website will also recommend similar movies and users that may have similar topics based on their favorite movie tags. If users have anything they don't want to say in the public comment area, they can also discuss it in one-on-one chats with friends. We hope this website can become a “haven” for movie enthusiasts.</p>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+            <img src="../static/img/backgrounds/monet2.jpg" alt="" width="400px" height="280px">
+        </div>
+    </div>
+    <div class="clearfix spacer"></div>
+    <div class="row">
+        <div class="col-md-4 ">
+            <img src="../static/img/backgrounds/monet1.jpg" alt="" width="400px" height="280px">
+        </div>
+        <div class="col-md-offset-1 col-md-7">
+            <div class="col-md-12"><div class="navbar-brand">Introduction of Our Company</div></div>
+            <p style="font-size: large">We call ourselves Panacea, for we believe in the healing power of movie. In this age of social media, where Generation Z is trapped in a isolated digital wasteland of emotionless interactions, we seek to restore the human connection through the art of storytelling. Movies can bridge the gaps, melt the ice, and bring people together for a more vibrant and meaningful life.</p>
+        </div>
+    </div>
+</div>
+</body>
+
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelFeedback" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabelFeedback">
+                        Feedback
+<!--                        <br>-->
+<!--                        <input id="rateInput" type="text" class="rating rating-loading" value="2.5" data-size="xl"  title="">-->
+                        <br>
+                        <div>
+                            <label for="feedbackTitleInput">Feedback Title</label>
+                        <textarea placeholder="Cannot be empty" class="feedbackTitle" id="feedbackTitleInput" value="" maxlength="30"></textarea>
+                        </div>
+                        <div>
+                            <label for="feedbackInput">Feedback Content</label>
+                        <textarea placeholder="Cannot be empty" id="feedbackInput" class="feedbackContent" value="" maxlength="500"></textarea>
+                        </div>
+
+
+
+
+                    </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="submitFeedbackInDetailPage">Submit</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+</div>
+
+
+
+{% endblock %}
+
+

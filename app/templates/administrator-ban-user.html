@@ -1,0 +1,193 @@
+
+<!--this page is for administrator to ban user-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../static/css/screen.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <!--[if IE 7]>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link href="../static/css/lity.css" rel="stylesheet">
+    <link href="../static/css/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/administrator-ban-user.css">
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/swiper-bundle.min.js"></script>
+    <script src="../static/js/administrator-ban-user.js"></script>
+</head>
+<body>
+<div class="container ban-user-container">
+
+    <div class="row"><a href="/" ><div class="col-md-1 home">home</div></a><a href="/administrator"><div class="col-md-1 col-md-offset-1 home">Administrator</div></a></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6 navbar-brand">Ban Users</div>
+
+            <div class="col-md-5">
+
+                <form action="{{ url_for('administrator_ban') }}" method="post" class="form-horizontal">
+                    <label for="searchBanUsers" class="col-md-4 text-center">Search Users</label>
+                    <div class="col-md-5">
+                        <input type="text" name="search_result" id="searchBanUsers" class="form-control ">
+                    </div>
+                    <div class="col-md-2"><button class="btn btn-lg buttondiv" type="submit">Search</button></div>
+                </form>
+            </div>
+
+        </div>
+
+</div>
+
+
+</div>
+
+<!--search results-->
+{% if user_searches == "1" %}
+
+    <div class="container" hidden>
+        <div class="row">
+            <div class="col-md-12 navbar-brand">Search Result</div>
+        </div>
+    </div>
+{% elif user_searches == "0" %}
+    <div class="container">
+        <div class="clearfix spacer"></div>
+        <div class="row ban-user-container">
+            <div class="col-md-12 navbar-brand">No Result</div>
+        </div>
+    </div>
+{% else %}
+    <div class="container">
+        <div class="clearfix spacer"></div>
+        <div class="row ban-user-container">
+            <div class="col-md-12 navbar-brand ">Search Results</div>
+        </div>
+
+        <div class="container">
+        <ul >
+            <div class="clearfix spacer"></div>
+            {% for user in user_searches.items %}
+            <li class="friendListItem">
+                <div class="col-md-9">
+                    <div class="row">
+                        <p class="friendListItemName"><a href="">{{ user.user_name }}&nbsp;<img src="{{ user.icon }}" alt="" class="friendListItemImg" width="30px" height="30px"></a></p>
+                    </div>
+                    <div class="row">
+                        <div class="friendListItemIntro">{{ user.introduction }}</div>
+                    </div>
+                </div>
+                {% if user.ban == false %}
+                <div class="col-md-3">
+                    <span hidden>{{ user.id }}</span>
+                    <span id="banUserSearched{{ user.id }}" class="fa fa-legal friendListItemAdd banUserSearched" style="font-size: xx-large"><span class="friendListItemAddWord">&nbsp;Ban!!!</span></span>
+                </div>
+                {% else %}
+                <div class="col-md-3">
+                    <span hidden>{{ user.id }}</span>
+                    <span  class="fa fa-arrow-circle-o-right friendListItemAdd banUserSearched" style="font-size: xx-large"><span class="friendListItemAddWord">&nbsp;Release!!!</span></span>
+                </div>
+                {% endif %}
+                <div class="col-md-12 seperatorUser"></div>
+                <div class="clearfix spacer"></div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    </div>
+{% endif %}
+
+
+<!--all user-->
+    <div class="container">
+        <div class="clearfix spacer"></div>
+        <div class="row ban-user-container">
+            <div class="col-md-12 navbar-brand ">User List</div>
+        </div>
+        <div class="clearfix spacer"></div>
+        <ul >
+
+            {% for user in users.items %}
+            <li class="friendListItem">
+                <div class="col-md-9">
+                    <div class="row">
+                        <p class="friendListItemName"><a href="">{{ user.user_name }}&nbsp;<img src="{{ user.icon }}" alt="" class="friendListItemImg" width="30px" height="30px"></a></p>
+                    </div>
+                    <div class="row">
+                        <div class="friendListItemIntro">{{ user.introduction }}</div>
+                    </div>
+                </div>
+                {% if user.ban == false %}
+                <div class="col-md-3">
+                    <span hidden>{{ user.id }}</span>
+                    <span id="banUse{{ user.id }}" class="fa fa-legal friendListItemAdd banUser" style="font-size: xx-large"><span class="friendListItemAddWord">&nbsp;Ban!!!</span></span>
+                </div>
+                {% else %}
+                <div class="col-md-3">
+                    <span hidden>{{ user.id }}</span>
+                    <span  class="fa fa-arrow-circle-o-right friendListItemAdd banUser" style="font-size: xx-large"><span class="friendListItemAddWord">&nbsp;Release!!!</span></span>
+                </div>
+                {% endif %}
+                <div class="col-md-12 seperatorUser"></div>
+                <div class="clearfix spacer"></div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+        <!-- Pagination Links-->
+<div class="clearfix spacer"></div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="pagination col-md-4 ">
+        <div class="text-center">
+    <a href="{{ url_for('administrator_ban', page=users.prev_num) }}"
+       class="btn btn-lg btn-outline-dark
+       {% if users.page == 1 %}disabled{% endif %}" style="color: black">
+        &laquo;
+    </a>
+<!-- Loop through the number of pages to display a link for each-->
+    {% for page_num in users.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+<!-- Check for the active page and set the link to "Active"-->
+            {% if users.page == page_num %}
+            <a href="{{ url_for('administrator_ban', page=page_num) }}"
+               class="btn btn-warning text-light" style="color: black">
+                {{ page_num }}
+            </a>
+            {% else %}
+            <a href="{{ url_for('administrator_ban',page=page_num) }}"
+               class="btn btn-outline-dark " style="color: black">
+                {{ page_num }}
+            </a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <a href="{{ url_for('administrator_ban',page=users.next_num) }}"
+       class="btn btn-outline-dark
+       {% if users.page == users.pages %}disabled{% endif %}" style="color: black">
+        &raquo;
+    </a>
+</div>
+    <p class="text-center mt-3 h4">
+       Showing page {{ users.page }} of {{ users.pages }}
+    </p>
+    </div>
+</div>
+
+
+</body>
+</html>

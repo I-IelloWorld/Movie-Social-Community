@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="../static/css/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.13/lib/index.js"></script>
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <
+    <title>Title</title>
+</head>
+<body>
+  <div class="col-lg-8" >
+      <h2 align="center" style="color:black">adding movie</h2>
+    <form action="" method="post">
+        <h3 class="i18n" >movie name:</h3><input class="form-control" type="text" name="movie_name" placeholder="Please enter..." required="" >
+<!--                                                 value=-->
+
+        <p><span class="i18n" >release time:</span><input class="form-control" type="date" name="time" placeholder="Please enter..." required="" >
+        <span class="i18n" > popular:</span><input class="form-control" type="text" name="popular" placeholder="Please enter..." required="" >
+        <span class="i18n" >label:</span>
+            <label style="color:black"><input name="comedy" type="checkbox" value="1" />Comedy </label>
+            <label style="color:black"><input name="action" type="checkbox" value="1" />Action </label>
+            <label style="color:black"><input name="love" type="checkbox" value="1" />Love </label>
+            <label style="color:black"><input name="cartoon" type="checkbox" value="1" /> Cartoon</label>
+            <label style="color:black"><input name="science" type="checkbox" value="1" /> Science</label>
+            <label style="color:black"><input name="suspense" type="checkbox" value="1" /> Suspense</label>
+            <label style="color:black"><input name="war" type="checkbox" value="1" /> War</label>
+            <label style="color:black"><input name="thriller" type="checkbox" value="1" /> Thriller</label>
+
+
+         <br><span class="i18n">introduction</span><textarea  class="form-control"  rows="6" name="intro" placeholder="Please enter..." style="OVERFLOW:hidden" required="" ></textarea>
+        </p>
+
+        <button type="submit" class="nextbutton" id="submit"> NEXT</button>
+
+    </form>
+
+<script>
+
+</script>
+<!--      <script>-->
+<!--          // var label = document.getElementById("label");-->
+<!--          // var val = document.getElementById("val").innerText-->
+<!--          // label.value = val-->
+<!--          -->
+<!--      </script>-->
+
+
+
+  </div>
+
+
+</body>
+</html>

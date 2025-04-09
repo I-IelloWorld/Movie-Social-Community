@@ -1,0 +1,11 @@
+.category-form {
+    padding: 13px 0 13px 0;
+    font-size: large;
+    border: 5px solid orange;
+    border-radius: 13px;
+}
+
+
+.pagination a {
+    color: black;
+}

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../static/css/screen.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <!--[if IE 7]>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link href="../static/css/lity.css" rel="stylesheet">
+    <link href="../static/css/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../static/css/category.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/swiper-bundle.min.js"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/category.js"></script>
+
+    <div>
+        <div class="col-md-12 col-md-offset-1 navbar-brand">{{ movie_labels[label] }}</div>
+        <div class="container-fluid">
+<!--            <h2 class="navbar-brand">Select Tags</h2>-->
+<!--            <form class="col-md-12 category-form" id="categorySelect">-->
+
+<!--                {% for movie_label in movie_labels %}-->
+<!--                <div class="col-md-2">-->
+<!--                    <div class="form-check">-->
+<!--                        <div class="col-md-4">-->
+<!--                            <label class="form-check-label">-->
+<!--                                {{ movie_labels[movie_label] }}-->
+<!--                            </label>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-2" >-->
+<!--                             <input class="form-check-input movie-category-select" name="" type="checkbox" value="" id="{{ movie_labels[movie_label] }}">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6"></div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% endfor %}-->
+<!--                <div class="col-md-2 col-md-offset-10">-->
+<!--                    <button class="btn btn-lg buttondiv " type="submit">Confirm</button>-->
+<!--                </div>-->
+
+<!--            </form>-->
+
+        </div>
+        <div class="clearfix spacer"></div>
+        <div class="col-md-12">
+            {% for movie in movie_partition.items %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ movie.id }}"><img class="card-img-top" src="{{ movie.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ movie.id }}">{{ movie.movie_name }}</a></h5>
+                <p class="card-text card-text-short">{{ movie.introduction }}</p>
+                                        <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ movie.vote_average }}" data-size="s"  title="">
+                    </p>
+                <a href="/movie/{{ movie.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+
+
+    </div>
+        <!-- Pagination Links-->
+        <div class="clearfix spacer"></div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="pagination col-md-4 ">
+                <div class="text-center">
+            <a href="{{ url_for('movie_partition',label=label, page=movie_partition.prev_num) }}"
+               class="btn btn-lg btn-outline-dark
+               {% if movie_partition.page == 1 %}disabled{% endif %}">
+                &laquo;
+            </a>
+        <!-- Loop through the number of pages to display a link for each-->
+            {% for page_num in movie_partition.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+        <!-- Check for the active page and set the link to "Active"-->
+                    {% if movie_partition.page == page_num %}
+                    <a href="{{ url_for('movie_partition', label=label, page=page_num) }}"
+                       class="btn btn-warning text-light">
+                        {{ page_num }}
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('movie_partition',label=label ,page=page_num) }}"
+                       class="btn btn-outline-dark">
+                        {{ page_num }}
+                    </a>
+                    {% endif %}
+                {% else %}
+                    ...
+                {% endif %}
+            {% endfor %}
+            <a href="{{ url_for('movie_partition',label=label ,page=movie_partition.next_num) }}"
+               class="btn btn-outline-dark
+               {% if movie_partition.page == movie_partition.pages %}disabled{% endif %}">
+                &raquo;
+            </a>
+        </div>
+            <p class="text-center mt-3 h4">
+               Showing page {{ movie_partition.page }} of {{ movie_partition.pages }}
+            </p>
+            </div>
+        </div>
+
+<!--        <div class="row">-->
+<!--             <div class="col-md-4"></div>-->
+<!--            <div class="pagination col-md-1 ">-->
+<!--                <label for="">page</label>-->
+<!--                <select class="selectpicker dropup  form-control" multiple data-live-search="false"  title="" data-dropup-auto="false">-->
+<!--                    {% for page_num in movie_partition.iter_pages() %}-->
+<!--                    <option value="{{ page }}"><a href="{{ url_for('movie_partition',label=label ,page=page_num) }}">{{ page_num }}</a></option>-->
+<!--                    {% endfor %}-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+
+{% endblock %}

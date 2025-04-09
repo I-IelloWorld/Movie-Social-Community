@@ -1,0 +1,322 @@
+﻿{% extends "base.html" %}
+{% block content %}
+
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/indexSwiper.css">
+
+    <div class="container-fluid">
+        <div class="clearfix spacer"></div>
+        <div class="container-fluid">
+            <div class="col-md-4 leftBar">
+<!--                popular movie 8-->
+                <div class="header-top leftBarTitle" ><span class="fa fa-fire"></span>Popular</div>
+                {% for moviePopular in movie_popular %}
+                    <ul><a class="card-text-short" href="/movie/{{ moviePopular.id }}">{{ moviePopular.movie_name }}</a></ul>
+                {% endfor %}
+
+<!--                <ul class="leftBarMore"><a href="">more</a></ul>-->
+
+                <div class="clearfix spacer"></div>
+
+<!--                recommendation movie-->
+                <div class="header-top leftBarTitle" ><span class="fa fa-heart"></span>Top Rated</div>
+                {% for movieTopRated in movie_TopRated %}
+                    <ul><a class="card-text-short" href="/movie/{{ movieTopRated.id }}">{{ movieTopRated.movie_name }}</a></ul>
+                {% endfor %}
+
+
+<!--                <ul class="leftBarMore"><a href="">more</a></ul>-->
+            </div>
+
+<!--            A swiper to show popular movies-->
+            <div class="col-md-5 col-md-offset-1">
+                <div class="navbar-brand"><span class="fa fa-film"></span>Popular Movie</div>
+                <div class="clearfix spacer"></div>
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+          <div class="swiper-wrapper">
+        {% for moviePopular in movie_popular %}
+             <div class="swiper-slide">
+
+                <a href="/movie/{{ moviePopular.id }}">
+                    <img src="{{ moviePopular.pic_path }}" alt=""/>
+                    <div class="row movie-title1 card-text-short">{{ moviePopular.movie_name }}</div>
+                </a>
+            </div>
+
+        {% endfor %}
+
+        <!--<div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster1.jpeg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <<a href="/login">
+                <img src="../static/img/banners/poster2.jpg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster1.jpeg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster2.jpg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster1.jpeg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster2.jpg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster1.jpeg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster2.jpg"/>
+            </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="/login">
+                <img src="../static/img/banners/poster1.jpeg"/>
+            </a>
+        </div>-->
+      </div>
+      <div class="swiper-button-next" style="color: orange"></div>
+      <div class="swiper-button-prev" style="color: orange"></div>
+    </div>
+    <div thumbsSlider="" class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% for moviePopular in movie_popular %}
+             <div class="swiper-slide">
+                <a href="/movie/{{ moviePopular.id }}">
+                    <img src="{{ moviePopular.pic_path }}" />
+                </a>
+
+
+            </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+		</div>
+
+		<div class="clearfix spacer"></div>
+
+            {% if authority != None %}
+        <div class="col-md-12 header-top">
+            <div class="col-md-2 col-md-offset-1">
+                <a href="/recommend_friends"><button class="socialSquareButton" >To Social Square</button></a>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                <div class="card-title" >To Social Square Where You Can Find New Friends With the Interest.</div>
+                    <div class="clearfix spacer"></div>
+                <div class="card-text">
+                    <p>The recommending friends function is based on your selected tag, and you rate.
+                        If you want more accurate result, you should rate more movies</p>
+                    <div class="clearfix spacer"></div>
+                    <a href="/recommend_friends">Start to Find Friends!</a>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <div class="clearfix spacer"></div>
+            {% endif %}
+
+            {% if authority != None %}
+            <div class="col-md-12 header-top">
+
+            <div>
+                    <ul class="nav">
+                    <!--                   recommend-->
+                   <li class="fourBarTitle fourBarTitleActive" id="indexRecommendSelector">
+                    <p class="nav-link" href="#"><span><span id="recommendUncheck" class="fa fa-check-circle-o" ></span></span>Recommendation</p>
+                  </li>
+                </ul>
+                <div class="clearfix spacer"></div>
+                <ul class="nav">
+                    <!--                   recommend-->
+                    {% if state == "Collaborative Filtering" %}
+                   <li class="fourBarTitleMin " >
+                    <a href="/change-recommendation-algorithm"><span><span class="fa fa-circle-o" ></span><span  class="fa fa-circle-o" hidden></span></span>Recommendation By Tag</a>
+                  </li>
+                    <li class="fourBarTitleMin fourBarTitleMinActive" >
+                    <a href="##"><span><span  class="fa fa-check-circle-o" hidden></span><span  class="fa fa-circle-o" ></span></span>Recommendation By Rating</a>
+                  </li>
+                    {% elif state == "similarity" %}
+                    <li class="fourBarTitleMin fourBarTitleMinActive" >
+                    <a href="##"><span><span class="fa fa-check-circle-o" ></span><span class="fa fa-circle-o" hidden></span></span>Recommendation By Tag</a>
+                  </li>
+                    <li class="fourBarTitleMin ">
+                    <a href="/change-recommendation-algorithm"><span><span  class="fa fa-circle-o" hidden></span><span  class="fa fa-circle-o" ></span></span>Recommendation By Rating</a>
+                  </li>
+                    {% else %}
+                    <li>You must rate more than 3 movies to get recommendation according to rate</li>
+                    <li class="fourBarTitleMin fourBarTitleMinActive" >
+                    <a href="##"><span><span class="fa fa-check-circle-o" ></span><span class="fa fa-circle-o" hidden></span></span>Recommendation By Tag</a>
+                  </li>
+                    <li class="fourBarTitleMin ">
+                    <a href="/change-recommendation-algorithm"><span><span  class="fa fa-circle-o" hidden></span><span  class="fa fa-circle-o" ></span></span>Recommendation By Rating</a>
+                  </li>
+                    {% endif %}
+                </ul>
+                {% for r in recommend %}
+                    <div id="indexRecommend">
+
+                    <div class="col-md-3" style="padding-top: 13px;">
+                    <div class="card">
+                        <a href="/movie/{{ r.id }}"><img class="card-img-top" src="{{ r.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                    <div class="card-body">
+                    <h5 class="card-title card-text-short"><a href="/movie/{{ r.id }}" class="">{{ r.movie_name }}</a></h5>
+                                        <p>
+                        <input disabled type="text" class="rating rating-loading" value="{{ r.vote_average }}" data-size="s"  title="">
+                        </p>
+
+                        <p class="card-text card-text-short">{{ r.introduction }}</p>
+                    <a href="/movie/{{ r.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="clearfix spacer"></div>
+
+
+
+
+
+		<div class="col-md-12 header-top">
+
+			<div>
+               <ul class="nav">
+                  <li class="fourBarTitle fourBarTitleActive" id="indexPopularSelector">
+                    <p class="nav-link" href="#"><span><span id="popularUncheck" class="fa fa-circle-o" hidden></span><span id="popularCheck" class="fa fa-check-circle-o"></span>Most Popular</span></p>
+                  </li>
+                  <li class="fourBarTitle" id="indexLatestSelector">
+                    <p class="nav-link" href="##"><span><span id="latestUncheck" class="fa fa-circle-o"></span><span id="latestCheck" class="fa fa-check-circle-o" hidden></span>Latest</span></p>
+                  </li>
+                  <li class="fourBarTitle" id="indexTopRatedSelector">
+                    <p class="nav-link" href="##"><span><span id="topUncheck" class="fa fa-circle-o"></span><span id="topCheck" class="fa fa-check-circle-o" hidden></span>Top Rated</span></p>
+                  </li>
+                  <li class="fourBarTitle" id="indexMostViewedSelector">
+                    <p class="nav-link" href="##"><span><span id="viewUncheck" class="fa fa-circle-o"></span><span id="viewCheck" class="fa fa-check-circle-o" hidden></span>Most Viewed</span></p>
+                  </li>
+<!--                   <li class="fourBarTitle more">-->
+<!--                    <p class="nav-link" href="##"><span><span></span>more</span></p>-->
+<!--                  </li>-->
+                </ul>
+
+            </div>
+
+<!--            These are 4 sections listing poplar movie, latest movie, top rated movie and most viewed movie.-->
+
+            <div id="indexPopular">
+                {% for moviePopular in movie_popular %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ moviePopular.id }}"><img class="card-img-top" src="{{ moviePopular.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ moviePopular.id }}">{{ moviePopular.movie_name }}</a></h5>
+                     <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ moviePopular.vote_average }}" data-size="s"  title="">
+                     </p>
+
+                    <p class="card-text card-text-short">{{ moviePopular.introduction }}</p>
+                <a href="/movie/{{ moviePopular.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+                {% endfor %}
+            </div>
+
+
+            <div id="indexLatest" hidden>
+                {% for movieLatest in movie_latest %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ movieLatest.id }}"><img class="card-img-top" src="{{ movieLatest.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ movieLatest.id }}">{{ movieLatest.movie_name }}</a></h5>
+                    <p>
+                        <input disabled type="text" class="rating rating-loading" value="{{ movieLatest.vote_average }}" data-size="s"  title="">
+                    </p>
+
+
+                    <p class="card-text card-text-short">{{ movieLatest.introduction }}</p>
+
+
+                <a href="/movie/{{ movieLatest.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+                {% endfor %}
+            </div>
+
+            <div id="indexTopRated" hidden>
+                {% for movieTopRated in movie_TopRated %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ movieTopRated.id }}"><img class="card-img-top" src="{{ movieTopRated.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ movieTopRated.id }}">{{ movieTopRated.movie_name }}</a></h5>
+                    <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ movieTopRated.vote_average }}" data-size="s"  title="">
+                    </p>
+
+
+                    <p class="card-text card-text-short">{{ movieTopRated.introduction }}</p>
+                <a href="/movie/{{ movieTopRated.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+                {% endfor %}
+            </div>
+
+            <div id="indexMostViewed" hidden>
+                {% for movieMostViewed in movie_MostViewed %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ movieMostViewed.id }}"><img class="card-img-top" src="{{ movieMostViewed.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ movieMostViewed.id }}">{{ movieMostViewed.movie_name }}</a></h5>
+                                         <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ movieMostViewed.vote_average }}" data-size="s"  title="">
+                    </p>
+
+                    <p class="card-text card-text-short">{{ movieMostViewed.introduction }}</p>
+                <a href="/movie/{{ movieMostViewed.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+                {% endfor %}
+            </div>
+
+
+		</div>
+
+	</div>
+        {% include "footer.html" %}
+	</div>
+
+
+
+
+
+{% endblock %}

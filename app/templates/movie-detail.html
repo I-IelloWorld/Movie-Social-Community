@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../static/css/screen.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <!--[if IE 7]>
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link href="../static/css/lity.css" rel="stylesheet">
+    <link href="../static/css/swiper-bundle.min.css" rel="stylesheet">
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/swiper-bundle.min.js"></script>
+    <script src="../static/js/index.js"></script>
+
+
+
+    <script src="../static/js/movie-detail.js"></script>
+    <link href="../static/css/movie-detail.css" rel="stylesheet">
+
+<body>
+    <div hidden id="movieDetailID">{{ movie.id }}</div>
+    <div class="container-fluid">
+        <div class="clearfix spacer"></div>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-5">
+                <div class="col-md-12">
+                    {% if authority == 1 %}
+                        <a class="label label-danger  " href="{{ url_for('deleteMovie',mid=movie.id) }}">Delete Movie</a>
+                    {% endif %}
+                </div>
+                <div class="col-md-12"><div class="movie-title">{{ movie.movie_name }}</div></div>
+                <div><img class="col-md-12" src="{{ movie.pic_path }}" alt="Film Image"></div>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <div class="clearfix spacer"></div>
+                <p class="movie-title">Film Rating</p>
+                <p><input disabled type="text" class="rating rating-loading" value="{{ grade_average }}" data-size="s"  title=""> <span>{{ movie.vote_count }} participants</span></p>
+                <p class="movie-title">Your Rating</p>
+                <p><input disabled type="text" class="rating rating-loading" value="{{ grade }}" data-size="s"  title=""></p>
+                <p class="movie-title">Category</p>
+                <p>
+                    {% if movie.comedy == 1 %}
+                        Comedy &nbsp;
+                    {% endif %}
+                    {% if movie.action == 1 %}
+                        Action &nbsp;
+                    {% endif %}
+                    {% if movie.love == 1 %}
+                        Love &nbsp;
+                    {% endif %}
+                    {% if movie.cartoon == 1 %}
+                        Cartoon &nbsp;
+                    {% endif %}
+                    {% if movie.science == 1 %}
+                        Science &nbsp;
+                    {% endif %}
+                    {% if movie.suspense == 1 %}
+                        Suspense &nbsp;
+                    {% endif %}
+                    {% if movie.war == 1 %}
+                        War &nbsp;
+                    {% endif %}
+                    {% if movie.thriller == 1 %}
+                        thriller
+                    {% endif %}
+                </p>
+                <p class="movie-title">Story Line</p>
+                <p class="card-text-shorter">{{ movie.introduction }}</p>
+            </div>
+        </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="col-md-6">-->
+<!--                <div class="navbar-brand">{{ movie.movie_name }}</div>-->
+<!--            </div>-->
+<!--            {% if authority == 1 %}-->
+<!--            <a class="label label-danger  " href="{{ url_for('deleteMovie',mid=movie.id) }}">Delete Movie</a>-->
+<!--            {% endif %}-->
+<!--            <div class="col-md-6 movieRatePopular">-->
+<!--                <div class="col-md-4">-->
+<!--                    <p>Film Rating</p>-->
+<!--                     <p>-->
+<!--                         <input disabled type="text" class="rating rating-loading" value="{{ grade_average }}" data-size="xs"  title="">-->
+<!--                         <p><span>{{ grade_average }}</span></p>-->
+<!--                    </p>-->
+<!--                    <p>{{ movie.vote_count }} participants</p>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <p>Your Rating</p>-->
+<!--                        <input disabled type="text" class="rating rating-loading" value="{{ grade }}" data-size="xs"  title="">-->
+<!--                    <p><span>{{ grade }}</span></p>-->
+<!--                </div>-->
+<!--                <div class="col-md-4">-->
+<!--                    <p>Popularity</p>-->
+<!--                    <p><span>Rank:</span></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="clearfix spacer"></div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-8">-->
+<!--                <img class="col-md-12" src="{{ movie.pic_path }}" alt="Film Image">-->
+<!--            </div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div>-->
+<!--                    <img class="col-md-12" src="{{ movie.pic_path }}" alt="Film Image">-->
+<!--                </div>-->
+<!--                <div class="clearfix spacer"></div>-->
+<!--                <div>-->
+<!--                    <img class="col-md-12" src="{{ movie.pic_path }}" alt="Film Image">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="clearfix spacer"></div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="header-top movieDetailBarTitle">category: &nbsp;
+                    {% if movie.comedy == 1 %}
+                        Comedy &nbsp;
+                    {% endif %}
+                    {% if movie.action == 1 %}
+                        Action &nbsp;
+                    {% endif %}
+                    {% if movie.love == 1 %}
+                        Love &nbsp;
+                    {% endif %}
+                    {% if movie.cartoon == 1 %}
+                        Cartoon &nbsp;
+                    {% endif %}
+                    {% if movie.science == 1 %}
+                        Science &nbsp;
+                    {% endif %}
+                    {% if movie.suspense == 1 %}
+                        Suspense &nbsp;
+                    {% endif %}
+                    {% if movie.war == 1 %}
+                        War &nbsp;
+                    {% endif %}
+                    {% if movie.thriller == 1 %}
+                        thriller
+                    {% endif %}
+                    <hr style="border:1px dashed orange" size=1></div>
+
+                <div class="col-md-12 header-top movieDetailBarTitle" style="word-wrap:break-word; word-break:break-all; ">storyline: &nbsp;
+                    <div class="col-md-12 movie-introduction">{{ movie.introduction }}</div>
+                    <hr style="border:1px dashed orange" size=1>
+                </div>
+<!--                <div class="col-md-12 movieTopDescription">Director: &nbsp;<hr style="border:1px dashed orange" size=1></div>-->
+<!--                <div class="col-md-12 movieTopDescription">Star: &nbsp;<hr style="border:1px dashed orange" size=1></div>-->
+            </div>
+            <div class="col-md-4">
+                {% if isLiked %}
+                <div class="header-top movieDetailBarTitle">
+                    <span style="cursor: pointer" id="movieHeartButton"><span>UnLike:&nbsp;</span><span  class="fa fa-heart" style="color: palevioletred"></span></span>
+                    <span style="cursor: pointer"  hidden id="movieEmptyHeartButton"><span>Like:&nbsp;</span><span class="fa fa-heart-o" style="color: palevioletred"></span></span>
+                </div>
+                {% else %}
+                 <div class="header-top movieDetailBarTitle">
+                    <span style="cursor: pointer" id="movieHeartButton1" hidden ><span>Unlike:&nbsp;</span><span class="fa fa-heart" style="color: palevioletred"></span></span>
+                    <span style="cursor: pointer" id="movieEmptyHeartButton1"><span>Like:&nbsp;</span><span class="fa fa-heart-o" style="color: palevioletred"></span></span>
+                </div>
+                {% endif %}
+                {% if isCollected %}
+                <div class="header-top movieDetailBarTitle" >
+                    <span id="CollectMovieButton" style="cursor: pointer"><span>Cancel Collect:&nbsp;</span><span  class="fa fa-bookmark" style="color:lightcoral"></span></span>
+                    <span id="CollectEmptyMovieButton" style="cursor: pointer" hidden><span>Collect:&nbsp;</span><span  class="fa fa-bookmark-o" style="color:lightcoral"></span></span>
+                </div>
+                {% else %}
+                <div class="header-top movieDetailBarTitle" >
+                    <span id="CollectMovieButton1" style="cursor: pointer" hidden><span>Cancel Collect:&nbsp;</span><span  class="fa fa-bookmark" style="color:lightcoral"></span></span>
+                    <span id="CollectEmptyMovieButton1" style="cursor: pointer" ><span>Collect:&nbsp;</span><span  class="fa fa-bookmark-o" style="color:lightcoral"></span></span>
+                </div>
+                {% endif %}
+
+                <div class="header-top movieDetailBarTitle" id="RateButton" style="cursor: pointer">Rate: &nbsp;
+                    {% if grade == 0 %}
+                    <span  class="fa fa-star-o" style="color:gold "></span>
+                    {% else %}
+                    <span  class="fa fa-star" style="color:gold "></span>
+                    {% endif %}
+
+
+                </div>
+                {% if isBanned == false %}
+                <div class="header-top movieDetailBarTitle" id="CommentButton" style="cursor: pointer">Comment: &nbsp;<span id="movieCommentButton" class="fa fa-commenting-o" ></span></div>
+                {% else %}
+                <div class="header-top movieDetailBarTitle">Banned, not allow to comment &nbsp;<span class="fa fa-close" ></span></div>
+                {% endif %}
+            </div>
+        </div>
+<!--        <div class="clearfix spacer"></div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="header-top movieDetailBarTitle">storyline<hr style="border:1px dashed orange" size=1></div>-->
+<!--            </div>-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="movieTopDescription">story content</div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="clearfix spacer"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-top movieDetailBarTitle">Comment<hr style="border:1px dashed orange" size=1></div>
+            </div>
+            {% for comment in commentlist %}
+            <div id="commentList">
+                <div class="col-md-7">
+                <a href="" style="float: left"><img src="{{ comment['user_icon'] }}" alt="" style="width: 30px; height: 30px; margin-right: 10px"></a>
+                <p><a href="">{{ comment['username'] }}</a></p>
+                <h3>{{ comment['comment.title'] }}</h3>
+                    <input disabled type="text" class="rating rating-loading" value="{{ comment['grade'] }}" data-size="xs"  title="">
+
+                    {% if comment['grade']==0 %}
+                    <span>not rated</span>
+                    {% else %}
+                    <span>{{ comment['grade'] }}</span>
+                    {% endif %}
+            </div>
+                <div class="col-md-5">
+                    <p>{{ comment['time'] }}</p>
+                </div>
+                <div class="col-md-12">
+                    <p>{{ comment['text'] }}</p>
+                </div>
+               <div class="col-md-1 col-md-offset-7">
+                    <p>
+                        <span>
+                            {% if comment['is_like'] %}
+                            <span class="fa fa-thumbs-o-up commentDislike" style="color: gray; cursor: pointer" hidden id="commentDislikeS{{ comment['id'] }}"></span>
+                            <span class="fa fa-thumbs-o-up commentLike" style="color: orangered; cursor: pointer" id="commentLikeS{{ comment['id'] }}"></span>
+                             {% else %}
+                            <span class="fa fa-thumbs-o-up commentDislike" style="color: gray; cursor: pointer" id="commentDislike1S{{ comment['id'] }}"></span>
+                            <span class="fa fa-thumbs-o-up commentLike" style="color: orangered; cursor: pointer" hidden id="commentLike1S{{ comment['id'] }}"></span>
+                             {% endif %}
+                        </span>
+
+                        <p hidden id="comment{{ comment['id'] }}">{{ comment['id'] }}</p><span id="likeComment">like</span>
+                        <span id="commentNum{{ comment['id'] }}">&nbsp; {{ comment['likes'] }}</span>
+                    </p>
+                </div>
+
+<!--                <div class="col-md-24 ">-->
+<!--                    <span hidden>{{ comment.id }}</span>-->
+<!--                    <span id="DeleteComment{{ comment.id }}" class="fa fa-legal commentListDelete deleteComment" style="font-size: large"><span class="commentListDeleteComment">&nbsp;Delete</span></span>-->
+<!--                </div>-->
+                {% if authority == 1 %}
+                <a style="color: white" class="col-md-2 col-md-offset-9 h2 delete-comment" href="{{ url_for('delete_comment', cid=comment.id) }}"><span class="fa fa-cut"></span>&nbsp Delete Comment</a>
+                {% elif user.user_name == comment['username'] %}
+                <a style="color: white" class="col-md-2 col-md-offset-9 h2 delete-comment" href="{{ url_for('delete_comment', cid=comment.id) }}"><span class="fa fa-cut"></span>&nbsp Delete Comment</a>
+                {% endif %}
+
+
+                <div class="col-md-12">
+                    <hr style="border:1px dashed orange" size=1>
+                </div>
+                <div class="clearfix spacer"></div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+
+    {% include "footer.html" %}
+    </div>
+
+        <div class="modal fade" id="Comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabelComment" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabelComment">
+                        Comment
+<!--                        <br>-->
+<!--                        <input id="rateInput" type="text" class="rating rating-loading" value="2.5" data-size="xl"  title="">-->
+                        <br>
+                        <div>
+                            <label for="commentTitleInput">Comment Title</label>
+                        <textarea placeholder="Cannot be empty" id="commentTitleInput" value="" maxlength="30"></textarea>
+                        </div>
+                        <div>
+                            <label for="commentInput">Comment Content</label>
+                        <textarea placeholder="Cannot be empty" id="commentInput" value="" maxlength="200"></textarea>
+                        </div>
+
+
+
+
+                    </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="submitCommentInDetailPage">Submit</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+</div>
+
+
+    <div class="modal fade" id="Rate" tabindex="-1" role="dialog" aria-labelledby="myModalLabelRate" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabelRate">
+                        Rate
+                        <br>
+                        <input id="rateInput" type="text" class="rating rating-loading" value="{{ grade }}" data-size="xl"  title="">
+                        <br>
+<!--                        <div>-->
+<!--                            <label for="commentTitleInput">Comment Title</label>-->
+<!--                        <textarea placeholder="Cannot be empty" id="commentTitleInput" value="" maxlength="30"></textarea>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label for="commentInput">Comment Content</label>-->
+<!--                        <textarea placeholder="Cannot be empty" id="commentInput" value="" maxlength="200"></textarea>-->
+<!--                        </div>-->
+
+
+
+
+                    </h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="submitRateInDetailPage">Submit</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+</div>
+
+{% endblock %}
+
+
+
+</body>

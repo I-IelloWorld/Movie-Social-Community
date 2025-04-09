@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../static/css/search.css">
+<script src="../static/js/search.js"></script>
+
+<div class="clearfix spacer"></div>
+<div class="container-fluid">
+    <div class="col-md-12 header-top search-brand">Search Results</div>
+    <div class="col-md-12">
+        {% if type == 'movieSearch' %}
+        <a href="/search_movie/1"><div class="col-md-1 search-change-type search-change-type-active">Movie Results</div></a>
+        <a href="/search_user"><div class="col-md-1 search-change-type">User Results </div></a>
+        {% else %}
+        <a href="/search_movie/1"><div class="col-md-1 search-change-type">Movie Results</div></a>
+        <a href="/search_user"><div class="col-md-1 search-change-type search-change-type-active">User Results </div></a>
+        {% endif %}
+
+    </div>
+
+    {% if type == 'movieSearch' %}
+    <div class="col-md-12">
+            {% for movie in movieList %}
+                <div class="col-md-3" style="padding-top: 13px;">
+                <div class="card">
+                    <a href="/movie/{{ movie.id }}"><img class="card-img-top" src="{{ movie.pic_path }}" alt="Card image cap" style="width: 18em; height: 28em" ></a>
+                <div class="card-body">
+                <h5 class="card-title card-text-short"><a href="/movie/{{ movie.id }}">{{ movie.movie_name }}</a></h5>
+                                        <p>
+                         <input disabled type="text" class="rating rating-loading" value="{{ movie.vote_average }}" data-size="s"  title="">
+                    </p>
+                <p class="card-text card-text-short">{{ movie.introduction }}</p>
+                <a href="/movie/{{ movie.id }}" class="btn btn-lg buttondiv" style="color: white">detail</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+    {% else %}
+    <div class="container">
+                <ul >
+                    <div class="clearfix spacer"></div>
+                    {% for user1 in userList %}
+                    <li class="friendListItemSearch">
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div hidden id="friendIdSearch">{{ user1.id }}</div>
+                                <p class="friendListItemNameSearch"><a href="/personal_page/{{user1.id}}">{{ user1.user_name }}&nbsp;<img src="{{ user1.icon }}" alt="" class="friendListItemImgSearch" width="30px" height="30px"></a></p>
+                            </div>
+                            <div class="row">
+                                <div class="friendListItemIntroSearch">{{ user1.introduction }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="fa fa-plus-circle friendListItemAddSearch" style="font-size: xx-large"><span class="friendListItemAddWordSearch">&nbsp;Add Friend</span></span>
+                        </div>
+                        <div class="col-md-12 seperatorUserSearch"></div>
+                        <div class="clearfix spacer"></div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+    {% endif %}
+
+<!--            输入交友理由的模态框 modal for making friends reasons-->
+            <div class="modal fade" id="friendReason" tabindex="-1" role="dialog" aria-labelledby="friendReasonLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="friendReasonLabel">
+                                Reasons for Making Friends
+                            </h4>
+                        </div>
+                        <div class="modal-body" id="friendReasonBody">
+                            <form  action="/add_friend" method="post" id="friendReasonForm">
+                                <input  id="selectedUserId" value="" name="userId" hidden>
+                                <div class="reason-empty-warning" id="reasonEmptyWarning" hidden>
+                                    you should input more than 2 words and less than 140 words
+                                </div>
+                                <label for="friendReasonBodyText">Reasons:</label>
+                                <textarea class="friendReasonTextarea" name="reason" id="friendReasonBodyText" cols="30" rows="10" maxlength="140" minlength="2" placeholder="must more than 2 words, but less than 140 words">I just want to make friend with you</textarea>
+                                <div class="clearfix spacer"></div>
+                                <button type="submit" class="btn btn-lg buttondiv">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" >Close
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+
+
+</div>
+{% include "footer.html" %}
+
+{% endblock %}

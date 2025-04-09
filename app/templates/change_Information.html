@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="../static/css/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.13/lib/index.js"></script>
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+        <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Change Information</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="../static/css/screen.css">
+        <link rel="stylesheet" href="../static/css/animation.css">
+    <!--[if IE 7]>
+
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link rel="stylesheet" href="../static/css/registrationAndLogin.css">
+
+    <!--    <link href="css/lity.css" rel="stylesheet">-->
+    <script src="../static/js/jquery-1.12.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/registrationAndLogin.js"></script>
+    <script src="../static/js/bootstrap-select.js"></script>
+    <title>Title</title>
+</head>
+<body>
+  <div class="col-lg-8" id="changeinfo">
+    <div class="col-md-6" >
+        <form action="" id="sign-up-form" method="post">
+            <div class="signTitle">Change your information</div>
+            <div class="clearfix spacer"></div>
+            <label for="username">Username</label>
+            <div class="form-group">
+                <p class="username-warning-same">{{ message }}</p>
+                <span class="fa fa-user login-inputicon"></span>
+                <input value="{{user.user_name}}" class="input-sign" type="text" id="username" name="username" >
+                <p hidden class="username-warning">Username should be alphabets, Chinese characters, numbers or "_" between 4-12 length</p>
+            </div>
+            <label for="Email">Email</label>
+            <div class="form-group">
+                <span class="fa fa-envelope login-inputicon"></span>
+                <input value="{{user.email}}" class="input-sign" type="text" id="Email"  name="email" >
+                <p hidden class="email-warning">Please enter correct email</p>
+            </div>
+            <label id="gender">Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="male">
+                <span class="fa fa-mars fa-male"></span>
+                <label class="form-check-label">
+                    Male
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="female" checked>
+                <span class="fa fa-venus fa-female"></span>
+                <label class="form-check-label">
+                    Female
+                </label>
+            </div>
+            <div class="form-group" id="tagSelect" hidden>
+                {% for movie_label in movie_labels %}
+                <input type="text" name="{{ movie_labels[movie_label] }}" id="{{ movie_labels[movie_label] }}CheckShow" value="">
+                {% endfor %}
+            </div>
+            <div class="form-group">
+
+                <p class="btn btn-lg buttondiv" id="selectTag"><span class="fa fa-tags" style="color: orangered"></span>Select Tags</p><span>&nbsp; must selected</span>
+            </div>
+            <label for="username">Introduction</label>
+            <div class="form-group">
+                <span class="fa fa-folder login-inputicon"></span>
+                <textarea type="text"  class="input-sign" name="textarea" cols="50" rows="2" > {{user.introduction}}</textarea>
+
+            </div>
+
+            <div class="clearfix spacer"></div>
+            <button class="btn btn-lg buttondiv" type="submit" id="sign-up-button">Confirm</button>
+
+        </form>
+    </div>
+
+
+<!--tag modal-->
+<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="myTagModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myTagModalLabel">
+                    Tags
+                </h4>
+            </div>
+
+            <div class="modal-body" id="tag-modal-body">
+                {% for movie_label in movie_labels %}
+                <div class="form-check">
+                    <input class="form-check-input movie-type-check" type="checkbox" value="" id="{{ movie_labels[movie_label] }}Check">
+                    <label class="form-check-label" for="{{ movie_labels[movie_label] }}Check">{{ movie_labels[movie_label] }}</label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="closeTagModal">Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script>
+
+</script>
+<!--      <script>-->
+<!--          // var label = document.getElementById("label");-->
+<!--          // var val = document.getElementById("val").innerText-->
+<!--          // label.value = val-->
+<!--          -->
+<!--      </script>-->
+
+
+
+  </div>
+
+
+</body>
+</html>

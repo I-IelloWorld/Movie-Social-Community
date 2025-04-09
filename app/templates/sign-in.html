@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="OrcasThemes">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Login</title>
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="../static/css/screen.css">
+  <link rel="stylesheet" href="../static/css/animation.css">
+  <!--[if IE 7]>
+
+  <![endif]-->
+  <link rel="stylesheet" href="../static/css/font-awesome.css">
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" href="../static/css/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
+  <link rel="stylesheet" href="../static/css/registrationAndLogin.css">
+  <!--    <link href="css/lity.css" rel="stylesheet">-->
+  <script src="../static/js/jquery-1.12.1.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/registrationAndLogin.js"></script>
+</head>
+<body>
+<div class="clearfix spacer"></div>
+<div class="container sign-up-form">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="brand">Panacea</div>
+    </div>
+    <div class="row">
+      <div class="brand1">Recommend movies you like and like-minded friends</div>
+    </div>
+    <div>
+      <div class="clearfix spacer"></div>
+
+      <img src="../static/img/banners/brand.png" alt="">
+
+    </div>
+  </div>
+  <div class="col-md-6" id="Sign-in">
+    <form action="" method="post" novalidate>
+      {{ form.csrf_token }}
+      {{ form.hidden_tag() }}
+      <div class="signTitle">Sign In</div>
+      <div class="clearfix spacer"></div>
+      <p class = "reminder">{{msg}}</p>
+      <label>Username</label>
+
+      <div class="form-group">
+          <div>
+              <span class="fa fa-user login-inputicon"></span>
+        {{ form.name }}
+          </div>
+
+<!--        <input value="" class="input-sign" type="text" placeholder="Enter your username" id="username1" required="">-->
+      </div>
+
+      <div class="clearfix spacer"></div>
+      <label>Password</label>
+
+      <div class="form-group">
+        <span class="fa fa-lock login-inputicon"></span>
+        {{ form.pwd }}
+<!--        <input value="" type="password" id="password1" class="input-sign" placeholder="password">-->
+      </div>
+
+      <div class="clearfix spacer"></div>
+<!--      <div class="buttondiv">Confirm</div>-->
+      <div id="logButton">{{ form.submit }}</div>
+
+      <a href="/registration">Sign up instead</a>
+    </form>
+  </div>
+</div>
+<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    Sign In Errors
+                </h4>
+            </div>
+            <div class="modal-body" id="log-modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg buttondiv" data-dismiss="modal" id="closeModal1">Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+</html>
